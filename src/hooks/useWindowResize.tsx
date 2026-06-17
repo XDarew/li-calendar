@@ -1,4 +1,4 @@
-import { type CallbackRef, useCallback, useRef } from 'react';
+import { useCallback, useRef } from 'react';
 import { isTauri } from '../utils/platform.ts';
 import { useConfigSync } from '../sync/configStore.ts';
 
@@ -24,7 +24,7 @@ interface ResizeState {
  * Tauri 环境下同步调用 setSize。
  */
 export function useWindowResize(): {
-  containerRef: CallbackRef<HTMLDivElement>;
+  containerRef: (el: HTMLDivElement | null) => void;
   handleElements: React.ReactNode;
 } {
   const { sync } = useConfigSync();
