@@ -6,8 +6,8 @@ export function createCalendarGridStyles(ctx: CalendarViewStyleContext) {
   const lunar = css`
     font-size: var(--font-size-sm);
     color: ${isDark ? '#999999' : '#707070'};
-    line-height: 1;
-    margin-top: 1px;
+    line-height: 1.2;
+    margin-top: 2px;
   `;
   const term = css`
     color: ${isDark ? '#81c784' : '#2e7d32'};
@@ -18,21 +18,24 @@ export function createCalendarGridStyles(ctx: CalendarViewStyleContext) {
     calendarGrid: css`
       display: grid;
       grid-template-columns: repeat(7, 1fr);
-      gap: 1px;
+      gap: 2px;
       justify-items: center;
       align-items: center;
+      padding: 4px 0;
     `,
     weekday: css`
       text-align: center;
       font-size: var(--font-size-sm);
-      font-weight: var(--font-weight-normal);
-      color: var(--text-main);
-      padding-bottom: 12px;
-      height: 24px;
+      font-weight: var(--font-weight-bold);
+      color: var(--text-sec);
+      padding: 6px 0;
+      opacity: 0.85;
     `,
     cell: css`
-      width: 40px;
-      height: 40px;
+      width: 100%;
+      aspect-ratio: 1;
+      max-width: 44px;
+      max-height: 44px;
       background: transparent;
       display: flex;
       flex-direction: column;
@@ -40,14 +43,14 @@ export function createCalendarGridStyles(ctx: CalendarViewStyleContext) {
       justify-content: center;
       border: none;
       border-radius: 50%;
-      transition: background 0.1s ease;
+      transition: background 0.15s ease;
       cursor: pointer;
       position: relative;
-      padding: 0;
+      padding: 2px;
       color: var(--text-main);
 
       &:hover {
-        background: ${isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.05)'};
+        background: ${isDark ? 'rgba(255, 255, 255, 0.08)' : 'rgba(0, 0, 0, 0.04)'};
       }
     `,
     otherMonth: css`
@@ -77,24 +80,26 @@ export function createCalendarGridStyles(ctx: CalendarViewStyleContext) {
     `,
     dateText: css`
       font-size: var(--font-size-base);
-      font-weight: var(--font-weight-normal);
-      line-height: 1.1;
+      font-weight: 500;
+      line-height: 1.2;
     `,
     lunar,
     term,
     tag: css`
       position: absolute;
-      top: 4px;
-      right: 4px;
+      top: 2px;
+      right: 2px;
       font-size: var(--font-size-xs);
-      width: 12px;
-      height: 12px;
+      min-width: 14px;
+      height: 14px;
+      padding: 0 2px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: bold;
+      font-weight: 600;
       z-index: 1;
-      border-radius: 50%;
+      border-radius: 7px;
+      line-height: 1;
     `,
     tagWork: css`
       background: ${isDark ? '#4d2d2f' : '#fde7e9'};

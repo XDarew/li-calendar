@@ -5,12 +5,13 @@ export function createCalendarFooterStyles(ctx: CalendarViewStyleContext) {
 
   return {
     footerInfo: css`
-      margin-top: 16px;
-      padding: 12px;
-      background: ${isDark ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.03)'};
+      margin-top: 14px;
+      padding: 14px 16px;
+      background: ${isDark ? 'rgba(255, 255, 255, 0.06)' : 'rgba(0, 0, 0, 0.04)'};
+      border-radius: 12px;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 14px;
       min-width: 0;
     `,
     footerMain: css`
@@ -25,13 +26,15 @@ export function createCalendarFooterStyles(ctx: CalendarViewStyleContext) {
       gap: 2px;
     `,
     lunarDay: css`
-      font-size: var(--font-size-lg);
-      font-weight: var(--font-weight-bold);
+      font-size: var(--font-size-xl);
+      font-weight: 700;
       color: var(--text-main);
+      line-height: 1.2;
     `,
     lunarYear: css`
       font-size: var(--font-size-sm);
       color: var(--text-sec);
+      margin-top: 2px;
     `,
     yiJiContainer: css`
       display: flex;
@@ -98,13 +101,15 @@ export function createCalendarFooterStyles(ctx: CalendarViewStyleContext) {
     countdown: css`
       display: flex;
       align-items: center;
-      gap: 6px;
-      font-size: var(--font-size-sm);
+      gap: 8px;
+      font-size: var(--font-size-base);
       color: var(--text-sec);
+      line-height: 1.5;
     `,
     countdownIcon: css`
-      font-size: 14px;
-      opacity: 0.8;
+      font-size: 16px;
+      opacity: 0.7;
+      flex-shrink: 0;
     `,
   };
 }

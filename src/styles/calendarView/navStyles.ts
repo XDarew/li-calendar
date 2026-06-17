@@ -8,12 +8,12 @@ export function createCalendarNavStyles(ctx: CalendarViewStyleContext) {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 12px;
-      padding: 0 4px;
+      margin-bottom: 10px;
+      padding: 0 2px;
     `,
     navTitle: css`
-      font-size: var(--font-size-base);
-      font-weight: var(--font-weight-bold);
+      font-size: var(--font-size-lg);
+      font-weight: 600;
       color: var(--text-main);
     `,
     navBtns: css`

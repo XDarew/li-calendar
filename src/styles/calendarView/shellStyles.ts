@@ -14,12 +14,13 @@ export function createCalendarShellStyles(ctx: CalendarViewStyleContext) {
     windowWidth,
   } = ctx;
 
-  /** 基于 fontConfig 计算各级字号 */
+  /** 基于 fontConfig 计算各级字号 - 更大层级差异，提升视觉层次 */
   const fs = fontConfig.fontSize;
-  const fontSizeXs = `${fs - 5}px`;
-  const fontSizeSm = `${fs - 3}px`;
+  const fontSizeXs = `${Math.max(9, fs - 4)}px`;
+  const fontSizeSm = `${fs - 2}px`;
   const fontSizeBase = `${fs}px`;
-  const fontSizeLg = `${fs + 3}px`;
+  const fontSizeLg = `${fs + 4}px`;
+  const fontSizeXl = `${fs + 8}px`;
 
   return {
     micaContainer: css`
@@ -32,6 +33,7 @@ export function createCalendarShellStyles(ctx: CalendarViewStyleContext) {
       --font-size-sm: ${fontSizeSm};
       --font-size-base: ${fontSizeBase};
       --font-size-lg: ${fontSizeLg};
+      --font-size-xl: ${fontSizeXl};
       --font-family: ${fontConfig.fontFamily};
       --font-weight-normal: ${fontConfig.fontWeight};
       --font-weight-bold: ${fontConfig.fontWeightBold};
@@ -44,7 +46,7 @@ export function createCalendarShellStyles(ctx: CalendarViewStyleContext) {
       border-radius: var(--calendar-radius, 16px);
       clip-path: inset(0 round var(--calendar-radius, 16px));
       overflow: hidden;
-      padding: 8px;
+      padding: 12px 14px;
       color: var(--text-main);
       font-family: var(--font-family);
       margin: 0;

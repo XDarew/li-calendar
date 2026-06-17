@@ -5,12 +5,12 @@ import { useConfigSync } from '../../../sync/configStore.ts';
 
 /** 预设尺寸选项 */
 const PRESETS = [
-  { label: '紧凑', width: 280 },
-  { label: '标准', width: 320 },
-  { label: '宽屏', width: 400 },
+  { label: '紧凑', width: 300 },
+  { label: '标准', width: 360 },
+  { label: '宽屏', width: 420 },
 ] as const;
 
-const widthMarks: SliderSingleProps['marks'] = { 240: '240', 320: '320', 400: '400', 600: '600' };
+const widthMarks: SliderSingleProps['marks'] = { 240: '240', 360: '360', 420: '420', 600: '600' };
 const heightMarks: SliderSingleProps['marks'] = { 0: '自适应', 400: '400', 800: '800' };
 
 const WindowSizeForm: React.FC = () => {

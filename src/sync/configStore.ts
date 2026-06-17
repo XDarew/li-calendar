@@ -14,7 +14,7 @@ const systemConfigDefaults = {
   autostart: false,
   theme: 'light',
   calendarPinned: false,
-  windowWidth: 320,
+  windowWidth: 360,
   windowHeight: 0,
 } satisfies SystemConfig;
 
@@ -26,7 +26,7 @@ const calendarFooterVisibleDefaults = {
 } satisfies CalendarFooterVisible;
 
 export const calendarFontDefaults = {
-  fontSize: 13,
+  fontSize: 14,
   fontFamily: 'system-ui',
   fontWeight: 400,
   fontWeightBold: 600,

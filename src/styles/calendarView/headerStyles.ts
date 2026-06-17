@@ -6,10 +6,10 @@ export function createCalendarHeaderStyles(ctx: CalendarViewStyleContext) {
   return {
     header: css`
       text-align: left;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
       display: flex;
       justify-content: space-between;
-      align-items: center;
+      align-items: flex-start;
       gap: 12px;
     `,
     headerContent: css`
@@ -42,17 +42,17 @@ export function createCalendarHeaderStyles(ctx: CalendarViewStyleContext) {
       }
     `,
     title: css`
-      font-size: var(--font-size-lg);
-      font-weight: var(--font-weight-bold);
-      line-height: 1.2;
-      margin-bottom: 3px;
+      font-size: var(--font-size-xl);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 4px;
       color: var(--text-main);
+      letter-spacing: 0.3px;
     `,
     subtitle: css`
-      font-size: var(--font-size-base);
-      line-height: 1.25;
+      font-size: var(--font-size-sm);
+      line-height: 1.4;
       color: var(--text-sec);
-      opacity: 0.9;
     `,
     festivalList: css`
       font-size: var(--font-size-base);
