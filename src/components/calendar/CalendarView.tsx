@@ -2,6 +2,7 @@ import React, { type CSSProperties } from 'react';
 import '../../utils/calendar/setupDayjsCalendar.ts';
 import { CalendarViewProvider } from '../../hooks/calender/CalendarViewContext.tsx';
 import { useCalendarViewModel } from '../../hooks/calender/useCalendarViewModel.ts';
+import { useWindowResize } from '../../hooks/useWindowResize.tsx';
 import CalendarFooter from './subs/CalendarFooter.tsx';
 import CalendarHeader from './subs/CalendarHeader.tsx';
 import CalendarMonthGrid from './subs/CalendarMonthGrid.tsx';
@@ -60,6 +61,9 @@ const CalendarView: React.FC<CalendarViewProps> = ({
     style,
   });
 
+  /** 拖拽调整大小 */
+  const { handleElements: resizeHandles } = useWindowResize();
+
   return (
     <CalendarViewProvider value={model}>
       <div {...model.rootProps}>
@@ -67,6 +71,7 @@ const CalendarView: React.FC<CalendarViewProps> = ({
         <CalendarMonthNav />
         <CalendarMonthGrid />
         <CalendarFooter />
+        {resizeHandles}
       </div>
     </CalendarViewProvider>
   );

@@ -25,12 +25,12 @@ export function createCalendarFooterStyles(ctx: CalendarViewStyleContext) {
       gap: 2px;
     `,
     lunarDay: css`
-      font-size: 16px;
-      font-weight: 500;
+      font-size: var(--font-size-lg);
+      font-weight: var(--font-weight-bold);
       color: var(--text-main);
     `,
     lunarYear: css`
-      font-size: 12px;
+      font-size: var(--font-size-sm);
       color: var(--text-sec);
     `,
     yiJiContainer: css`
@@ -44,7 +44,7 @@ export function createCalendarFooterStyles(ctx: CalendarViewStyleContext) {
       display: flex;
       align-items: flex-start;
       gap: 8px;
-      font-size: 13px;
+      font-size: var(--font-size-base);
       min-width: 0;
     `,
     yiJiBadge: css`
@@ -99,7 +99,7 @@ export function createCalendarFooterStyles(ctx: CalendarViewStyleContext) {
       display: flex;
       align-items: center;
       gap: 6px;
-      font-size: 12px;
+      font-size: var(--font-size-sm);
       color: var(--text-sec);
     `,
     countdownIcon: css`

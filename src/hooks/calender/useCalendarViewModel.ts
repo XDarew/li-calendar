@@ -108,6 +108,14 @@ export function useCalendarViewModel({
     footerCountdownVisible,
     frontendWindowEffectEnabled,
     frontendWindowTransparency,
+    fontSize,
+    fontFamily,
+    fontWeight,
+    fontWeightBold,
+    textColor,
+    textColorSecondary,
+    windowWidth,
+    windowHeight,
   } = config;
   /** 页脚总开关。 */
   const showFooter = calendarFooterVisible;
@@ -130,6 +138,8 @@ export function useCalendarViewModel({
     transparent: effectiveTransparent,
     isDark,
     backgroundOpacity: effectiveBackgroundOpacity,
+    fontConfig: { fontSize, fontFamily, fontWeight, fontWeightBold, textColor, textColorSecondary },
+    windowWidth,
   });
 
   // 选中哪一天、月历面板显示哪个月（可不同步，例如选其它月中的日期会跳面板）
@@ -296,7 +306,11 @@ export function useCalendarViewModel({
     onPointerDown: handlePointerDown,
     onTouchStart: handleTouchStart,
     onTouchEnd: handleTouchEnd,
-    style,
+    style: {
+      ...style,
+      '--calendar-window-width': `${windowWidth}px`,
+      ...(windowHeight > 0 ? { '--calendar-window-height': `${windowHeight}px`, height: `${windowHeight}px` } : {}),
+    } as React.CSSProperties,
   };
 
   // 拆给子组件的 props，保持 CalendarView 只做展开渲染

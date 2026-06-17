@@ -1,7 +1,5 @@
-import { invoke } from '@tauri-apps/api/core';
-import { PhysicalSize } from '@tauri-apps/api/dpi';
-import { getCurrentWindow } from '@tauri-apps/api/window';
 import { type RefObject, useLayoutEffect, useRef } from 'react';
+import { isTauri } from '../../utils/platform.ts';
 
 /** 任务栏弹窗在 `setSize` 后按新高度重新贴边，防抖避免 ResizeObserver 连发 */
 const REPOSITION_NEAR_TASKBAR_MS = 150;
@@ -17,13 +15,15 @@ export function useTauriCalendarResize(
   const repositionTaskbarPopupTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useLayoutEffect(() => {
-    if (!autoResizeWindow) {
+    if (!autoResizeWindow || !isTauri) {
       return;
     }
     const el = containerRef.current;
     if (!el) return;
 
-    const scheduleRepositionTaskbarPopup = (): void => {
+    const scheduleRepositionTaskbarPopup = async (): Promise<void> => {
+      const { getCurrentWindow } = await import('@tauri-apps/api/window');
+      const { invoke } = await import('@tauri-apps/api/core');
       const w = getCurrentWindow();
       if (w.label !== 'calendar') {
         return;
@@ -40,6 +40,8 @@ export function useTauriCalendarResize(
     };
 
     const resizeWindow = async (): Promise<void> => {
+      const { getCurrentWindow } = await import('@tauri-apps/api/window');
+      const { PhysicalSize } = await import('@tauri-apps/api/dpi');
       const window = getCurrentWindow();
       const factor = await window.scaleFactor();
       const width = el.offsetWidth;

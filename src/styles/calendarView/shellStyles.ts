@@ -10,16 +10,32 @@ export function createCalendarShellStyles(ctx: CalendarViewStyleContext) {
     overlayBackground,
     textureBackground,
     isDark,
+    fontConfig,
+    windowWidth,
   } = ctx;
+
+  /** 基于 fontConfig 计算各级字号 */
+  const fs = fontConfig.fontSize;
+  const fontSizeXs = `${fs - 5}px`;
+  const fontSizeSm = `${fs - 3}px`;
+  const fontSizeBase = `${fs}px`;
+  const fontSizeLg = `${fs + 3}px`;
 
   return {
     micaContainer: css`
       --mica-bg: ${containerBackground};
       --card-bg: ${isDark ? 'rgba(45, 45, 45, 0.5)' : 'rgba(255, 255, 255, 0.5)'};
       --accent: ${isDark ? '#60cdff' : '#0067c0'};
-      --text-main: ${isDark ? '#ffffff' : '#1c1c1c'};
-      --text-sec: ${isDark ? '#cccccc' : '#5d5d5d'};
-      width: 320px;
+      --text-main: ${fontConfig.textColor || (isDark ? '#ffffff' : '#1c1c1c')};
+      --text-sec: ${fontConfig.textColorSecondary || (isDark ? '#cccccc' : '#5d5d5d')};
+      --font-size-xs: ${fontSizeXs};
+      --font-size-sm: ${fontSizeSm};
+      --font-size-base: ${fontSizeBase};
+      --font-size-lg: ${fontSizeLg};
+      --font-family: ${fontConfig.fontFamily};
+      --font-weight-normal: ${fontConfig.fontWeight};
+      --font-weight-bold: ${fontConfig.fontWeightBold};
+      width: var(--calendar-window-width, ${windowWidth}px);
       background: var(--mica-bg);
       backdrop-filter: ${backdropFilter};
       -webkit-backdrop-filter: ${backdropFilter};
@@ -30,6 +46,7 @@ export function createCalendarShellStyles(ctx: CalendarViewStyleContext) {
       overflow: hidden;
       padding: 8px;
       color: var(--text-main);
+      font-family: var(--font-family);
       margin: 0;
       touch-action: none;
       user-select: none;

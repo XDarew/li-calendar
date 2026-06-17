@@ -30,6 +30,7 @@ export type MacosTrayBarIconKind = 'date' | 'calendar';
 export interface ConfigItem
   extends SystemConfig,
     CalendarFooterVisible,
+    CalendarFontConfig,
     ConfigWindows,
     ConfigMacos {}
 
@@ -39,6 +40,26 @@ export interface SystemConfig {
   theme: CalendarTheme;
   /** 日历小窗是否固定在最前（与顶栏图钉一致，持久化） */
   calendarPinned: boolean;
+  /** 日历窗口宽度（像素），默认 320 */
+  windowWidth: number;
+  /** 日历窗口高度（像素），0 表示自适应内容 */
+  windowHeight: number;
+}
+
+/** 日历文字样式配置 */
+export interface CalendarFontConfig {
+  /** 基础字号，默认 13 */
+  fontSize: number;
+  /** 字体族，默认 'system-ui' */
+  fontFamily: string;
+  /** 正常字重，默认 400 */
+  fontWeight: number;
+  /** 加粗字重，默认 600 */
+  fontWeightBold: number;
+  /** 主文字颜色，空值表示跟随主题 */
+  textColor: string;
+  /** 次要文字颜色，空值表示跟随主题 */
+  textColorSecondary: string;
 }
 
 export interface CalendarFooterVisible {

@@ -7,6 +7,7 @@ import { createCalendarHeaderStyles } from './calendarView/headerStyles.ts';
 import { createCalendarNavStyles } from './calendarView/navStyles.ts';
 import { createCalendarShellStyles } from './calendarView/shellStyles.ts';
 import type { CalendarViewStyleContext, CalendarViewStyleProps } from './calendarView/types.ts';
+import { calendarFontDefaults } from '../sync/configStore.ts';
 
 /**
  * 日历窗口全套样式（Mica 壳、网格、页脚等），随透明开关、深浅色与背景透明度变化。
@@ -21,6 +22,8 @@ export const useCalendarViewStyles = createStyles(({ css, cx }, props: CalendarV
     css,
     cx,
     isDark,
+    fontConfig: props.fontConfig ?? calendarFontDefaults,
+    windowWidth: props.windowWidth ?? 320,
   };
 
   return {

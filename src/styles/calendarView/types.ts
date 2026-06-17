@@ -1,11 +1,14 @@
 import type { SerializeCSS } from 'antd-style/lib/core';
 import type { ClassNamesUtil } from 'antd-style/lib/types/css';
+import type { CalendarFontConfig } from '../../sync/type/configTypes.ts';
 
 /** createStyles 回调入参（与日历组件传入的 props 一致） */
 export interface CalendarViewStyleProps {
   transparent?: boolean;
   isDark?: boolean;
   backgroundOpacity?: number;
+  fontConfig?: CalendarFontConfig;
+  windowWidth?: number;
 }
 
 /** 由主题与透明选项推导出的纯值，供各样式块共用 */
@@ -23,4 +26,6 @@ export interface CalendarViewStyleContext extends CalendarThemeTokens {
   css: SerializeCSS;
   cx: ClassNamesUtil;
   isDark: boolean;
+  fontConfig: CalendarFontConfig;
+  windowWidth: number;
 }

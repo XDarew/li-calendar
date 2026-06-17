@@ -42,22 +42,22 @@ export function createCalendarHeaderStyles(ctx: CalendarViewStyleContext) {
       }
     `,
     title: css`
-      font-size: 16px;
-      font-weight: 500;
+      font-size: var(--font-size-lg);
+      font-weight: var(--font-weight-bold);
       line-height: 1.2;
       margin-bottom: 3px;
       color: var(--text-main);
     `,
     subtitle: css`
-      font-size: 14px;
+      font-size: var(--font-size-base);
       line-height: 1.25;
       color: var(--text-sec);
       opacity: 0.9;
     `,
     festivalList: css`
-      font-size: 13px;
+      font-size: var(--font-size-base);
       color: var(--accent);
-      font-weight: 500;
+      font-weight: var(--font-weight-bold);
       padding: 0 2px 1px;
       display: flex;
       align-items: center;

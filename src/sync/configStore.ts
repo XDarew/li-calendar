@@ -2,6 +2,7 @@ import { trayClockDateFormats, trayClockTimeFormats } from '../enums/trayClockEn
 import { createSync } from './base/crossWindowSync.ts';
 import type {
   CalendarFooterVisible,
+  CalendarFontConfig,
   ConfigItem,
   ConfigMacos,
   ConfigWindows,
@@ -13,6 +14,8 @@ const systemConfigDefaults = {
   autostart: false,
   theme: 'light',
   calendarPinned: false,
+  windowWidth: 320,
+  windowHeight: 0,
 } satisfies SystemConfig;
 
 const calendarFooterVisibleDefaults = {
@@ -21,6 +24,15 @@ const calendarFooterVisibleDefaults = {
   footerYiJiVisible: false,
   footerCountdownVisible: true,
 } satisfies CalendarFooterVisible;
+
+export const calendarFontDefaults = {
+  fontSize: 13,
+  fontFamily: 'system-ui',
+  fontWeight: 400,
+  fontWeightBold: 600,
+  textColor: '',
+  textColorSecondary: '',
+} satisfies CalendarFontConfig;
 
 const configWindowsDefaults = {
   desktopWidgetEnabled: true,
@@ -47,6 +59,7 @@ const configMacosDefaults = {
 const configDefaults: ConfigItem = {
   ...systemConfigDefaults,
   ...calendarFooterVisibleDefaults,
+  ...calendarFontDefaults,
   ...configWindowsDefaults,
   ...configMacosDefaults,
 };

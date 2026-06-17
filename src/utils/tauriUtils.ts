@@ -1,6 +1,4 @@
-import { invoke } from '@tauri-apps/api/core';
-import { getCurrentWindow } from '@tauri-apps/api/window';
-import { isMobile } from './platform.ts';
+import { isMobile, isTauri } from './platform.ts';
 
 /** 移动端日历页与设置页之间切换时使用的前端事件名。 */
 const mobileNavigationEvent = 'li-calendar:navigation';
@@ -48,8 +46,14 @@ export function getCalendarWindowKindFromLocation(): string | null {
 
 /**
  * 弹窗类窗口执行 hide，主窗口等执行 close。
+ * 浏览器环境下仅关闭当前标签页。
  */
 export async function closeOrHideCalendarWindow(windowKind: string | null): Promise<void> {
+  if (!isTauri) {
+    window.close();
+    return;
+  }
+  const { getCurrentWindow } = await import('@tauri-apps/api/window');
   const currentWindow = getCurrentWindow();
   if (windowKind === 'popup' || windowKind === 'macos-popup') {
     await currentWindow.hide();
@@ -65,12 +69,20 @@ export async function openMainApplicationWindow(): Promise<void> {
     setMobileAppView('settings');
     return;
   }
+  if (!isTauri) {
+    setMobileAppView('settings');
+    return;
+  }
+  const { invoke } = await import('@tauri-apps/api/core');
   await invoke('open_main_window');
 }
 
 /**
  * 在空白区域按下指针时启动窗口拖拽（需在可拖拽区域且非交互控件上触发）。
+ * 浏览器环境下不执行任何操作。
  */
 export async function startCalendarShellDragging(): Promise<void> {
+  if (!isTauri) return;
+  const { getCurrentWindow } = await import('@tauri-apps/api/window');
   await getCurrentWindow().startDragging();
 }

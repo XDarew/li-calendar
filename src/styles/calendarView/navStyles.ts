@@ -12,8 +12,8 @@ export function createCalendarNavStyles(ctx: CalendarViewStyleContext) {
       padding: 0 4px;
     `,
     navTitle: css`
-      font-size: 14px;
-      font-weight: 600;
+      font-size: var(--font-size-base);
+      font-weight: var(--font-weight-bold);
       color: var(--text-main);
     `,
     navBtns: css`
@@ -36,8 +36,8 @@ export function createCalendarNavStyles(ctx: CalendarViewStyleContext) {
     `,
     todayBtn: css`
       && {
-        font-size: 12px;
-        font-weight: 500;
+        font-size: var(--font-size-sm);
+        font-weight: var(--font-weight-bold);
       }
     `,
   };
